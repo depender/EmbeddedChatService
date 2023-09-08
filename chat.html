@@ -1,5 +1,5 @@
 <html>
- <style type='text/css'>
+<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #006bd8;
 		font-family: "Arial", sans-serif;
@@ -50,7 +50,15 @@
 		);
 	};
 
-</script> 
-	
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://govspend--bendev.sandbox.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
 </html>
-  
